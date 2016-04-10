@@ -1,0 +1,28 @@
+{
+	"csgo01":{	
+		"game":"csgo01",
+		"user":"csgo01",
+		"location":"~/",
+		"base_command":"csgoserver",
+		"commands":{
+			"start":"start",
+			"stop":"stop",
+			"restart":"restart",
+			"update":["update-functions","update"]
+		}
+		
+	},
+	"test01":{	
+		"game":"test01",
+		"user":"koriwi",
+		"location":"~/",
+		"base_command":"script.sh",
+		"commands":{
+			"start":"start",
+			"stop":"stop",
+			"restart":"restart",
+			"update":["update-functions","update"]
+		}
+		
+	}
+}
