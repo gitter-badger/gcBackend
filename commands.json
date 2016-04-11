@@ -1,8 +1,8 @@
 {
-	"csgo01":{	
+	"csgo01":{
 		"game":"csgo01",
 		"user":"csgo01",
-		"location":"~/",
+		"location":"/home/csgo01",
 		"base_command":"csgoserver",
 		"commands":{
 			"start":"start",
@@ -10,19 +10,17 @@
 			"restart":"restart",
 			"update":["update-functions","update"]
 		}
-		
 	},
-	"test01":{	
-		"game":"test01",
-		"user":"koriwi",
-		"location":"~/",
-		"base_command":"script.sh",
+	"ts3":{
+		"game":"ts3",
+		"user":"ts3",
+		"location":"/home/ts3",
+		"base_command":"ts3server_startscript.sh",
 		"commands":{
 			"start":"start",
 			"stop":"stop",
-			"restart":"restart",
-			"update":["update-functions","update"]
+			"restart":"restart"
 		}
-		
+
 	}
 }

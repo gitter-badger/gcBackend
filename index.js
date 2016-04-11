@@ -22,7 +22,7 @@ function execute(command){
 
 function game_command(gameObject, command){
 	let commandString = "sudo -u " + gameObject.user + " -s ";
-    commandString += gameObject.location+gameObject.base_command + " " + command;
+    commandString += gameObject.location+"/"+gameObject.base_command + " " + command;
     console.log(commandString);
 	return execute(commandString);
 }
