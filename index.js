@@ -1,30 +1,54 @@
 "use strict";
 
 const Promise = require("bluebird");
-const exec = require('child_process').exec;
+const spawn = require('child_process').spawn;
 const Express = require("express");
 const bodyParser = require("body-parser");
 
 let games = require("./commands.json");
 let app = Express();
 app.use(bodyParser.json());
-function execute(command){
+function execute(command,args){
     return new Promise((resolve,reject)=>{
-        return exec(command, function(error, stdout, stderr){
-            if(!error)
-                resolve(stdout);
-            if(error)
-                reject(stderr);
+        let prog = spawn(command,args);
+        let output = '';
+        let error = '';
+
+
+        prog.stdout.on('data',(data)=>{
+            output += data;
         });
+
+        prog.on('close',(data)=>{
+            if(error)
+                reject(error);
+
+            resolve(output);
+            
+        });
+
+        prog.stderr.on('data',(data)=>{
+            error += data;
+        });
+
     })
     
 };
 
 function game_command(gameObject, command){
+    let basecommand = "sudo";
+    let args = [];
+
+    args.push("-u");
+    args.push(gameObject.user);
+    args.push("-s");
+    args.push(gameObject.location+"/"+gameObject.base_command);
+    args.push(command);
+
 	let commandString = "sudo -u " + gameObject.user + " -s ";
     commandString += gameObject.location+"/"+gameObject.base_command + " " + command;
-    console.log(commandString);
-	return execute(commandString);
+    console.log(args);
+	return execute(basecommand,args);
 }
 
 app.post("/api",(request,response)=>{
@@ -92,14 +116,6 @@ app.post("/api",(request,response)=>{
             });
     }
     
-
-    /*game_command(game,command)
-    .then((output)=>{
-        console.log(output);
-    });*/
-
-
-
     
 });
 

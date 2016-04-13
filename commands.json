@@ -22,5 +22,17 @@
 			"restart":"restart"
 		}
 
+	},
+	"test01":{
+		"game":"test01",
+		"user":"koriwi",
+		"location":"/usr/bin",
+		"base_command":"mkdir",
+		"commands":{
+			"start":"/home/koriwi/start",
+			"stop":"home/koriwi/stop",
+			"restart":"home/koriwi/restart"
+		}
+
 	}
 }
