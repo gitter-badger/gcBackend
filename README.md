@@ -18,7 +18,7 @@ webinterface ALL=(ts3) NOPASSWD: /bin/bash
 node index.js
 ```
 ##API POST
-http://localhost:8080/api
+http://localhost:8080/api/servers
 ```javascript
 {
   "game":"test01",
@@ -33,6 +33,20 @@ If an action need to execute more than one command just put then in an array.
 
 The response is pretty simple and self explanatory.
 If everything works, it returns success. If something f***ed up, it returns an error message.
+
+##API GET
+http://localhost:8080/api/sysload
+
+returns:
+```javascript
+{
+  "1":"10",
+  "5":"11",
+  "15":"12"
+}
+```
+* Key = Minutes
+* Value = Average load in these last minutes
 
 ##To-Do
 * load port from config file

@@ -4,6 +4,7 @@ const Promise = require("bluebird");
 const spawn = require('child_process').spawn;
 const Express = require("express");
 const bodyParser = require("body-parser");
+const os = require("os");
 
 let games = require("./commands.json");
 let app = Express();
@@ -42,7 +43,15 @@ function game_command(gameObject, command){
     args.push("-u");
     args.push(gameObject.user);
     args.push("-s");
-    args.push(gameObject.location+"/"+gameObject.base_command);
+    console.log(gameObject.base_command);
+    console.log(gameObject.base_command.split(" "));
+    let baseCommand = gameObject.base_command.split(" ");
+    args.push(gameObject.location+"/"+baseCommand[0]);
+    baseCommand.forEach((arr)=>{
+        if(arr == baseCommand[0])
+            return;
+        args.push(arr);
+    });
     args.push(command);
 
 	let commandString = "sudo -u " + gameObject.user + " -s ";
@@ -51,7 +60,7 @@ function game_command(gameObject, command){
 	return execute(basecommand,args);
 }
 
-app.post("/api",(request,response)=>{
+app.post("/api/servers",(request,response)=>{
 
     if(!request.body.hasOwnProperty("game")||!request.body.hasOwnProperty("action")){
         response.send({
@@ -117,6 +126,21 @@ app.post("/api",(request,response)=>{
     }
     
     
+});
+
+app.get("/api/sysload",(request,response)=>{
+    let coreCount = os.cpus().length;
+    let loadArr = [];
+
+    os.loadavg().forEach((core)=>{
+        loadArr.push(core/coreCount*100);
+    });
+    response.send({
+        "1":loadArr[0],
+        "5":loadArr[1],
+        "15":loadArr[2]
+    });
+
 });
 
 
