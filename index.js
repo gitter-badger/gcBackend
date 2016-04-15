@@ -6,7 +6,7 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const os = require("os");
 
-let games = require("./commands.json");
+const games = require("./commands.json");
 let app = Express();
 app.use(bodyParser.json());
 function execute(command,args){
@@ -141,6 +141,21 @@ app.get("/api/sysload",(request,response)=>{
         "15":loadArr[2]
     });
 
+});
+
+app.get("/api/library",(request,response)=>{
+    let servers = games;
+    for(let server in games){
+        delete servers[server].location;
+        delete servers[server].base_command;
+        delete servers[server].user;
+        let comArr = [];
+        for(let command in servers[server].commands){
+            comArr.push(command);
+        }
+        servers[server].commands = comArr; 
+    }
+    response.send(servers);
 });
 
 
