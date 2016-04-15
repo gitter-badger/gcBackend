@@ -1,6 +1,6 @@
 {
 	"csgo01":{
-		"game":"Counter Strike: Global Offensive",
+		"name":"Counter Strike: Global Offensive",
 		"user":"csgo01",
 		"location":"/home/csgo01",
 		"base_command":"csgoserver",
@@ -12,7 +12,7 @@
 		}
 	},
 	"ts3":{
-		"game":"Teamspeak 3",
+		"name":"Teamspeak 3",
 		"user":"ts3",
 		"location":"/home/ts3",
 		"base_command":"ts3server_startscript.sh",
@@ -24,7 +24,7 @@
 
 	},
 	"test01":{
-		"game":"Test Server",
+		"name":"Test Server",
 		"user":"koriwi",
 		"location":"/usr/bin",
 		"base_command":"mkdir",
@@ -36,7 +36,7 @@
 
 	},
 	"test02":{
-		"game":"Test Server",
+		"name":"Test Server",
 		"user":"koriwi",
 		"location":"/usr/bin",
 		"base_command":"rm -r",

@@ -21,7 +21,7 @@ node index.js
 http://localhost:8080/api/servers
 ```javascript
 {
-  "game":"test01",
+  "id":"test01",
   "action":"start"
 }
 ```
@@ -29,7 +29,7 @@ http://localhost:8080/api/servers
 * *test01* is the json object for the TeamSpeak3 Server.
 * *start* is the command that is found in the test01 json object.
 
-If an action need to execute more than one command just put then in an array.
+If an action needs to execute more than one command just put then in an array.
 
 The response is pretty simple and self explanatory.
 If everything works, it returns success. If something f***ed up, it returns an error message.
@@ -40,7 +40,7 @@ http://localhost:8080/api/library
 ```javascript
 {
   "test01": {
-    "game": "Test Server",
+    "name": "Test Server",
     "commands": [
       "start",
       "stop",
@@ -70,5 +70,3 @@ returns:
 
 ##To-Do
 * load port from config file
-* get system load over API
-* get all games/servers available over API
