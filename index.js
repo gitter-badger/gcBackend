@@ -15,7 +15,6 @@ function execute(command,args){
         let output = '';
         let error = '';
 
-
         prog.stdout.on('data',(data)=>{
             output += data;
         });
@@ -144,7 +143,7 @@ app.get("/api/sysload",(request,response)=>{
 });
 
 app.get("/api/library",(request,response)=>{
-    let servers = games;
+    let servers = JSON.parse(JSON.stringify(games));
     for(let server in games){
         delete servers[server].location;
         delete servers[server].base_command;
