@@ -35,6 +35,26 @@ The response is pretty simple and self explanatory.
 If everything works, it returns success. If something f***ed up, it returns an error message.
 
 ##API GET
+http://localhost:8080/api/library
+
+```javascript
+{
+  "test01": {
+    "game": "Test Server",
+    "commands": [
+      "start",
+      "stop",
+      "restart"
+    ]
+  }
+}
+```
+Pretty self explanatory
+
+* test01 is server id (Like minecraft_server_1)
+* game: is the game name (Like Minecraft)
+* commands is an array out of all commands available
+
 http://localhost:8080/api/sysload
 
 returns:
