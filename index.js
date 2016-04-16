@@ -7,8 +7,16 @@ const bodyParser = require("body-parser");
 const os = require("os");
 
 const servers = require("./servers.json");
+const config = require("./config.json");
 let app = Express();
+
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", config.access.acao);
+  res.header("Access-Control-Allow-Headers", config.access.acah);
+  next();
+});
+
 
 function execute(command,args){
     return new Promise((resolve,reject)=>{
@@ -116,22 +124,20 @@ app.post("/api/servers",(request,response)=>{
         });
     }else{
         const command = servers[requestedServer].commands[action];
-            console.log(command);
-            server_command(servers[requestedServer],command)
-            .then(()=>{
-                response.send({
-                    "status":"success"
-                });
-            })
-            .catch((e)=>{
-                    response.send({
-                    "status":"failed",
-                    "message":e
-                });
+        console.log(command);
+        server_command(servers[requestedServer],command)
+        .then(()=>{
+            response.send({
+                "status":"success"
             });
+        })
+        .catch((e)=>{
+                response.send({
+                "status":"failed",
+                "message":e
+            });
+        });
     }
-    
-    
 });
 
 app.get("/api/sysload",(request,response)=>{
@@ -165,4 +171,4 @@ app.get("/api/library",(request,response)=>{
 });
 
 
-app.listen(8080,console.log("started on port 8080"));
+app.listen(config.network.port,console.log("started on port 8080"));

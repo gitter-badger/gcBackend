@@ -1,0 +1,9 @@
+{
+	"network":{
+		"port":8080
+	},
+	"access":{
+		"acao":"*",
+		"acah":"Origin, X-Requested-With, Content-Type, Accept"
+	}
+}
