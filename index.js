@@ -140,6 +140,31 @@ app.post("/api/servers",(request,response)=>{
     }
 });
 
+app.get("/api/library/:id",(request,response)=>{
+    let id = request.params.id;
+    if(!servers.hasOwnProperty(id)){
+        console.log("bad request");
+        response.send({
+            "error":"id not found"
+        });
+        return;
+    }
+
+    let serverLib = JSON.parse(JSON.stringify(servers[id]));
+    
+   
+    delete serverLib.location;
+    delete serverLib.base_command;
+    delete serverLib.user;
+    let comArr = [];
+    for(let command in serverLib.commands){
+        comArr.push(command);
+    }
+    serverLib.commands = comArr; 
+    
+    response.send(serverLib);
+});
+
 app.get("/api/sysload",(request,response)=>{
     let coreCount = os.cpus().length;
     let loadArr = [];
