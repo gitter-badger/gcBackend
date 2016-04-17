@@ -32,8 +32,9 @@ function execute(command,args){
         });
 
         prog.on('close',(data)=>{
-            console.log(data);
-
+            console.log("Data:"+data);
+            console.log("Output:"+output);
+            console.log("Error:"+error);
             if(error)
                 reject(error);
 
