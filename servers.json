@@ -25,23 +25,23 @@
 	},
 	"test01":{
 		"name":"Test Server",
-		"user":"koriwi",
-		"location":"/usr/bin",
+		"user":"webinterface",
+		"location":"/bin",
 		"base_command":"mkdir",
 		"commands":{
-			"start":"/home/koriwi/start",
-			"stop":"home/koriwi/stop",
-			"restart":"home/koriwi/restart"
+			"start":"/home/webinterface/start",
+			"stop":"home/webinterface/stop",
+			"restart":"home/webinterface/restart"
 		}
 
 	},
 	"test02":{
 		"name":"Test Server",
-		"user":"koriwi",
-		"location":"/usr/bin",
+		"user":"webinterface",
+		"location":"/bin",
 		"base_command":"rm -r",
 		"commands":{
-			"clean":"/home/koriwi/start"
+			"clean":"/home/webinterface/start"
 		}
 
 	}
