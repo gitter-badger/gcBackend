@@ -20,7 +20,9 @@ app.use(function(req, res, next) {
 
 function execute(command,args){
     return new Promise((resolve,reject)=>{
-        let prog = spawn(command,args);
+	let prog = spawn(command,args,{
+          "detached":true
+        });
         let output = '';
         let error = '';
 
@@ -29,6 +31,8 @@ function execute(command,args){
         });
 
         prog.on('close',(data)=>{
+            console.log(data);
+            
             if(error)
                 reject(error);
 
