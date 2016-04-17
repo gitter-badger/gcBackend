@@ -20,15 +20,10 @@ app.use(function(req, res, next) {
 
 function execute(command,args){
     return new Promise((resolve,reject)=>{
-<<<<<<< HEAD
-        let prog = spawn(command,args,{
-          "detached":true
-	});
-=======
 	let prog = spawn(command,args,{
           "detached":true
         });
->>>>>>> 4274d2973da2fe7dcc7dc8852a253f3de6ac2a17
+
         let output = '';
         let error = '';
 
@@ -38,20 +33,19 @@ function execute(command,args){
 
         prog.on('close',(data)=>{
             console.log(data);
-            
+
             if(error)
                 reject(error);
 
             resolve(output);
-            
-        });
+       });
 
         prog.stderr.on('data',(data)=>{
             error += data;
         });
 
     })
-    
+
 };
 
 function server_command(gameObject, command){
@@ -63,7 +57,7 @@ function server_command(gameObject, command){
     args.push("-u");
     args.push(gameObject.user);
     args.push("-s");
-    
+
     args.push(gameObject.location+"/"+baseCommand[0]);
     baseCommand.forEach((arr)=>{
         if(arr == baseCommand[0])
@@ -161,8 +155,7 @@ app.get("/api/library/:id",(request,response)=>{
     }
 
     let serverLib = JSON.parse(JSON.stringify(servers[id]));
-    
-   
+
     delete serverLib.location;
     delete serverLib.base_command;
     delete serverLib.user;
@@ -170,8 +163,7 @@ app.get("/api/library/:id",(request,response)=>{
     for(let command in serverLib.commands){
         comArr.push(command);
     }
-    serverLib.commands = comArr; 
-    
+    serverLib.commands = comArr;
     response.send(serverLib);
 });
 
