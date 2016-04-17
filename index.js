@@ -32,7 +32,7 @@ function execute(command,args){
             output += data;
         });
 
-        prog.on('close',(data)=>{
+        prog.on('disconnect',(data)=>{
             console.log("Data:"+data);
             console.log("Output:"+output);
             console.log("Error:"+error);
