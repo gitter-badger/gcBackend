@@ -35,10 +35,13 @@ function execute(command,args){
             console.log("Data:"+data);
             console.log("Output:"+output);
             console.log("Error:"+error);
-            if(error)
+            if(error){
+                console.log("command failed");
                 reject(error);
+            }
 
             resolve(output);
+            console.log("command successfull")
        });
 
         prog.stderr.on('data',(data)=>{
