@@ -21,7 +21,8 @@ app.use(function(req, res, next) {
 function execute(command,args){
     return new Promise((resolve,reject)=>{
 	let prog = spawn(command,args,{
-          "detached":true
+          "detached":true,
+          "stdio":['ipc']
         });
 
         let output = '';
@@ -38,6 +39,7 @@ function execute(command,args){
             if(error){
                 console.log("command failed");
                 reject(error);
+                return;
             }
 
             resolve(output);
