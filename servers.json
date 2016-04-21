@@ -30,8 +30,8 @@
 		"base_command":"mkdir",
 		"commands":{
 			"start":"/home/webinterface/start",
-			"stop":"home/webinterface/stop",
-			"restart":"home/webinterface/restart"
+			"stop":"/home/webinterface/stop",
+			"restart":"/home/webinterface/restart"
 		}
 
 	},

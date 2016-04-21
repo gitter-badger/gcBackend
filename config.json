@@ -3,7 +3,7 @@
 		"port":8080
 	},
 	"access":{
-		"acao":"*",
+		"acao":"http://176.9.19.16",
 		"acah":"Origin, X-Requested-With, Content-Type, Accept"
 	}
 }
