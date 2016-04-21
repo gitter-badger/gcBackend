@@ -46,6 +46,12 @@ http://localhost:8080/api/library
       "stop",
       "restart"
     ]
+  },
+  "test02": {
+    "name": "Test Server",
+    "commands": [
+      "clean"
+    ]
   }
 }
 ```
@@ -54,6 +60,21 @@ Pretty self explanatory
 * test01 is server id (Like minecraft_server_1)
 * game: is the game name (Like Minecraft)
 * commands is an array out of all commands available
+
+http://localhost:8080/api/library/:id
+
+```javascript
+{
+  "test01": {
+    "name": "Test Server",
+    "commands": [
+      "start",
+      "stop",
+      "restart"
+    ]
+  }
+}
+```
 
 http://localhost:8080/api/sysload
 
